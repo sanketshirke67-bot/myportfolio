@@ -873,3 +873,16 @@ if (exportBtn) {
     showToast('📁 Streak data exported!', 'success');
   });
 }
+    // Day 31: Store and display last synced time
+    const syncTime = new Date();
+    localStorage.setItem('lastProjectsSync', syncTime.toISOString());
+    const lastSyncedDiv = document.getElementById('last-synced');
+    if (lastSyncedDiv) {
+      lastSyncedDiv.textContent = `🔄 Last synced: ${syncTime.toLocaleString()}`;
+    }
+    // Show previously stored sync time on load
+const storedSync = localStorage.getItem('lastProjectsSync');
+if (storedSync && document.getElementById('last-synced')) {
+  const syncDate = new Date(storedSync);
+  document.getElementById('last-synced').textContent = `🔄 Last synced: ${syncDate.toLocaleString()}`;
+}
