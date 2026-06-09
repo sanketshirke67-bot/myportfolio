@@ -902,3 +902,20 @@ function showToast(message, type = 'success') {
     if (toast.parentNode) toast.remove();
   }, 4000);
 }
+// Day 33: Random developer tip on page load
+const tips = [
+  '💡 Tip: Press "?" to see all keyboard shortcuts!',
+  '🔥 Tip: Double-click a project card to open the repo.',
+  '📋 Tip: Click any repo name to copy it to clipboard.',
+  '⚡ Tip: Press "R" for a random project.',
+  '🎨 Tip: Press "D" to toggle dark/light mode.',
+  '📁 Tip: Export your streak data with the button in Streak section.',
+  '🔄 Tip: Projects show last synced time – data is fresh!',
+  '🚀 "The best way to predict the future is to create it."',
+  '💻 "Code is like humor. When you have to explain it, it’s bad."',
+  '🌟 "Every expert was once a beginner."'
+];
+const randomTip = tips[Math.floor(Math.random() * tips.length)];
+setTimeout(() => {
+  showToast(randomTip, 'info');
+}, 1000); // Wait 1 second after page loads
