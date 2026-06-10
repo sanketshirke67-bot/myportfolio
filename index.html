@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio | Sanket Shirke – 33 Days of Progress</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Sanket</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#github-activity">Activity</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#streak-calendar">Streak</a></li>
+        <li><a href="#daily-log">Daily Log</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+        <div class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <canvas id="particle-canvas"></canvas>
+      <div class="hero-content">
+        <h1>Hi, I'm <span>Sanket Shirke</span></h1>
+        <div class="typing-container"><p class="typing-text"></p></div>
+        <button id="hero-btn">Explore My Work</button>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <p>I'm a passionate learner on a journey to become a full-stack developer. I love building clean, responsive websites and solving real-world problems with code. This portfolio is a living document of my progress – every day I add something new!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills">
+      <div class="container">
+        <h2>My Skills</h2>
+        <div class="skills-grid circular">
+          <div class="skill-card">
+            <div class="circular-progress" data-progress="90"><div class="inner-circle"><span class="skill-percent">0%</span></div></div>
+            <i class="fab fa-html5"></i><h3>HTML5</h3>
+          </div>
+          <div class="skill-card">
+            <div class="circular-progress" data-progress="85"><div class="inner-circle"><span class="skill-percent">0%</span></div></div>
+            <i class="fab fa-css3-alt"></i><h3>CSS3</h3>
+          </div>
+          <div class="skill-card">
+            <div class="circular-progress" data-progress="70"><div class="inner-circle"><span class="skill-percent">0%</span></div></div>
+            <i class="fab fa-js"></i><h3>JavaScript</h3>
+          </div>
+          <div class="skill-card">
+            <div class="circular-progress" data-progress="80"><div class="inner-circle"><span class="skill-percent">0%</span></div></div>
+            <i class="fab fa-git-alt"></i><h3>Git & GitHub</h3>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat-item"><i class="fas fa-code"></i><span class="stat-number" data-target="15">0</span><p>Projects Completed</p></div>
+          <div class="stat-item"><i class="fas fa-coffee"></i><span class="stat-number" data-target="50">0</span><p>Cups of Coffee</p></div>
+          <div class="stat-item"><i class="fas fa-calendar-alt"></i><span class="stat-number" data-target="33">0</span><p>Days of Learning</p></div>
+          <div class="stat-item"><i class="fas fa-eye"></i><span class="stat-number" id="visitor-count">0</span><p>Visitors</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Projects -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <h2>My GitHub Projects</h2>
+        <div class="projects-controls">
+          <input type="text" id="project-search" placeholder="Search projects..." class="search-input" />
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+            <button class="filter-btn" data-filter="HTML">HTML</button>
+            <button class="filter-btn" data-filter="CSS">CSS</button>
+          </div>
+        </div>
+        <div id="github-projects" class="projects-grid"><div class="loader">Loading projects...</div></div>
+        <div class="load-more-container"><button id="load-more-btn" class="load-more-btn" style="display: none;">Load More</button></div>
+        <div class="random-project-container"><button id="random-project-btn" class="random-project-btn">🎲 Random Project</button></div>
+        <div id="last-updated-repo" class="last-updated-repo"></div>
+        <div id="last-synced" class="last-synced"></div>
+      </div>
+    </section>
+
+    <!-- GitHub Activity -->
+    <section id="github-activity" class="github-activity">
+      <div class="container">
+        <h2>GitHub Activity</h2>
+        <div class="activity-controls">
+          <div class="repo-selector">
+            <label>Repository (owner/repo):</label>
+            <input type="text" id="repo-input" value="sanketshirke67-bot/portfolio" />
+            <button id="refresh-activity"><i class="fas fa-sync-alt"></i> Refresh</button>
+          </div>
+        </div>
+        <div class="activity-grid">
+          <div class="activity-card">
+            <i class="fab fa-github"></i><h3>Pull Requests</h3>
+            <div class="activity-stats"><span>Open: <span id="pr-open">0</span></span><span>Closed: <span id="pr-closed">0</span></span></div>
+            <div class="progress-bar-container"><div class="progress-bar" id="pr-progress"></div></div>
+          </div>
+          <div class="activity-card">
+            <i class="fas fa-exclamation-circle"></i><h3>Issues</h3>
+            <div class="activity-stats"><span>Open: <span id="issues-open">0</span></span><span>Closed: <span id="issues-closed">0</span></span></div>
+            <div class="progress-bar-container"><div class="progress-bar" id="issues-progress"></div></div>
+          </div>
+          <div class="activity-card">
+            <i class="fas fa-code-branch"></i><h3>Code Review Progress</h3>
+            <div class="activity-stats"><span>Reviewed: <span id="review-reviewed">0</span></span><span>Pending: <span id="review-pending">0</span></span></div>
+            <div class="progress-bar-container"><div class="progress-bar" id="review-progress"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="blog">
+      <div class="container">
+        <h2>Latest Articles</h2>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <h3>How I Started My Web Dev Journey</h3>
+            <p class="blog-date">April 21, 2025</p>
+            <div class="reading-time">⏱️ <span>0</span> min read</div>
+            <p>It all began with a simple "Hello World". I remember opening my first HTML file in a browser and feeling amazed. That small spark turned into a daily habit of learning and building. From static pages to interactive portfolios, every line of code taught me something new.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="blog-card">
+            <h3>5 CSS Tricks Every Beginner Should Know</h3>
+            <p class="blog-date">April 20, 2025</p>
+            <div class="reading-time">⏱️ <span>0</span> min read</div>
+            <p>CSS can be tricky, but mastering a few techniques can transform your designs. First, flexbox – it's a game-changer for layouts. Second, CSS Grid for complex structures. Third, custom properties (variables) to keep your code DRY. Fourth, transitions and animations. Fifth, media queries for responsive design.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+          <article class="blog-card">
+            <h3>Why I'm Documenting My Learning Daily</h3>
+            <p class="blog-date">April 19, 2025</p>
+            <div class="reading-time">⏱️ <span>0</span> min read</div>
+            <p>Building in public keeps me accountable. Each day I add a small feature to my portfolio and write about it. This practice not only solidifies my knowledge but also creates a visible progress track for potential employers. Plus, it's motivating to see how many consecutive days I've worked.</p>
+            <a href="#" class="read-more">Read More →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Carousel -->
+    <section id="testimonials" class="testimonials">
+      <div class="container">
+        <h2>What People Say</h2>
+        <div class="carousel-container">
+          <div class="carousel-slide">
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Sanket is incredibly dedicated and learns fast. His portfolio shows his growth every day!"</p><h4>— Jane Doe, Mentor</h4></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"I'm impressed by the attention to detail and the clean code. Great work!"</p><h4>— John Smith, Developer</h4></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"The dark mode toggle and animations make this portfolio stand out. Keep it up!"</p><h4>— Emily Chen, Designer</h4></div>
+          </div>
+          <button class="carousel-prev">❮</button>
+          <button class="carousel-next">❯</button>
+          <div class="carousel-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Streak Calendar -->
+    <section id="streak-calendar" class="streak-calendar">
+      <div class="container">
+        <h2>🔥 My Work Streak</h2>
+        <div class="streak-stats">
+          <div class="streak-card"><i class="fas fa-fire"></i><span id="current-streak">0</span><p>Current Streak</p></div>
+          <div class="streak-card"><i class="fas fa-calendar-check"></i><span id="total-days">0</span><p>Total Days Worked</p></div>
+        </div>
+        <div id="calendar" class="calendar-grid"></div>
+        <div class="streak-actions">
+          <button id="mark-today-btn" class="streak-btn">✅ Mark Today as Worked</button>
+          <button id="export-streak-btn" class="streak-btn export-btn">📥 Export Streak Data</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Log -->
+    <section id="daily-log" class="daily-log">
+      <div class="container">
+        <h2>Daily Learning Log</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">Day 33</div><div class="timeline-content"><h3>Final All-in-One Version</h3><p>All features from Day 1 to 33 consolidated: keyboard shortcuts, streak calendar, GitHub activity, project cards with last commit, export data, random tips, and much more.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <div class="email-copy-wrapper">
+            <input type="email" id="email" placeholder="Your Email" required />
+            <button type="button" id="copy-email-btn" class="copy-btn"><i class="fas fa-copy"></i> Copy my email</button>
+          </div>
+          <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Sanket Shirke. Built with ❤️ for my learning journey.</p>
+    <p id="visit-message" class="visit-message"></p>
+    <button id="copy-link-btn" class="copy-link-btn">🔗 Copy Link</button>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <div class="scroll-progress">
+    <svg class="progress-ring" width="60" height="60">
+      <circle class="progress-ring-circle-bg" stroke="#333" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+      <circle class="progress-ring-circle" stroke="#e94560" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+    </svg>
+    <div class="scroll-percent">0%</div>
+  </div>
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
