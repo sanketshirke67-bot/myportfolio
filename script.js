@@ -633,3 +633,13 @@ if (storedSync && document.getElementById('last-synced')) {
   const syncDate = new Date(storedSync);
   document.getElementById('last-synced').textContent = `🔄 Last synced: ${syncDate.toLocaleString()}`;
 }
+// Day 34: Double-click on empty space to scroll to top
+document.addEventListener('dblclick', (e) => {
+  // Ignore double-clicks on interactive elements
+  const target = e.target;
+  const ignoreTags = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'I', 'SPAN', 'H3', 'H2'];
+  const isInteractive = ignoreTags.includes(target.tagName) || target.closest('.project-card') || target.closest('.streak-btn') || target.closest('.carousel-prev') || target.closest('.carousel-next');
+  if (!isInteractive) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
