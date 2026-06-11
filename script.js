@@ -643,3 +643,30 @@ document.addEventListener('dblclick', (e) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 });
+// Day 35: Random programming quote on project card hover
+const quotes = [
+  "💻 Code is poetry.",
+  "🐛 First solve the problem, then write the code.",
+  "⚡ Simplicity is the soul of efficiency.",
+  "🔧 It works on my machine!",
+  "📚 Any fool can write code that a computer understands. Good programmers write code that humans understand.",
+  "🎯 Make it work, make it right, make it fast.",
+  "🧠 The only way to learn a new programming language is by writing programs in it.",
+  "🚀 Done is better than perfect.",
+  "💡 Programming isn't about what you know; it's about what you can figure out.",
+  "🌟 Code is like humor. When you have to explain it, it’s bad."
+];
+
+const cards = document.querySelectorAll('.project-card');
+cards.forEach(card => {
+  let timeout;
+  card.addEventListener('mouseenter', () => {
+    timeout = setTimeout(() => {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      showToast(randomQuote, 'info');
+    }, 500);
+  });
+  card.addEventListener('mouseleave', () => {
+    clearTimeout(timeout);
+  });
+});
