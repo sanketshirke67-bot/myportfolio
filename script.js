@@ -670,3 +670,23 @@ cards.forEach(card => {
     clearTimeout(timeout);
   });
 });
+// Day 36: Time-based greeting
+function updateGreeting() {
+  const greetingSpan = document.getElementById('greeting');
+  if (!greetingSpan) return;
+  const hour = new Date().getHours();
+  let greeting = '';
+  let emoji = '';
+  if (hour < 12) {
+    greeting = 'Good morning';
+    emoji = '🌅';
+  } else if (hour < 18) {
+    greeting = 'Good afternoon';
+    emoji = '☀️';
+  } else {
+    greeting = 'Good evening';
+    emoji = '🌙';
+  }
+  greetingSpan.textContent = `${greeting}, visitor! ${emoji}`;
+}
+updateGreeting();
