@@ -690,3 +690,6 @@ function updateGreeting() {
   greetingSpan.textContent = `${greeting}, visitor! ${emoji}`;
 }
 updateGreeting();
+// Day 37: Dynamic copyright year
+const yearSpan = document.getElementById('current-year');
+if (yearSpan) yearSpan.textContent = new Date().getFullYear();
